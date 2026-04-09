@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Politique de confidentialité – Kintore</title>
+  <title>Privacy Policy – Kintore</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,9 +30,35 @@
       margin-bottom: 8px;
     }
 
-    header p {
-      font-size: 15px;
-      color: rgba(255,255,255,0.8);
+    header p { font-size: 15px; color: rgba(255,255,255,0.8); }
+
+    .lang-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 16px 24px;
+      background: #13132a;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lang-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.15s;
+    }
+
+    .lang-btn.active {
+      background: rgba(233,69,96,0.15);
+      border-color: rgba(233,69,96,0.4);
+      color: #e94560;
     }
 
     .container {
@@ -105,9 +131,9 @@
 
     .badge {
       display: inline-block;
-      background: rgba(233,69,96,0.12);
-      color: #e94560;
-      border: 1px solid rgba(233,69,96,0.2);
+      background: rgba(34,197,94,0.12);
+      color: #22c55e;
+      border: 1px solid rgba(34,197,94,0.2);
       border-radius: 6px;
       padding: 2px 8px;
       font-size: 12px;
@@ -116,111 +142,174 @@
       vertical-align: middle;
     }
 
-    .badge.green {
-      background: rgba(34,197,94,0.12);
-      color: #22c55e;
-      border-color: rgba(34,197,94,0.2);
-    }
-
-    .contact-box {
-      background: rgba(79,156,249,0.08);
-      border: 1px solid rgba(79,156,249,0.2);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-top: 12px;
-    }
-
-    .contact-box a {
-      color: #4f9cf9;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
     footer {
       text-align: center;
       padding: 40px 24px 0;
       font-size: 13px;
       color: rgba(255,255,255,0.2);
     }
+
+    em { font-style: italic; }
+    a { color: #4f9cf9; text-decoration: none; }
   </style>
 </head>
 <body>
 
-  <header>
-    <span class="logo">KINTORE</span>
-    <p>Politique de confidentialité</p>
-  </header>
+<header>
+  <span class="logo">KINTORE</span>
+  <p id="header-sub"></p>
+</header>
 
-  <div class="container">
+<div class="lang-bar">
+  <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('ja')">JA</button>
+  <button class="lang-btn" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" onclick="setLang('de')">DE</button>
+  <button class="lang-btn" onclick="setLang('ko')">KO</button>
+  <button class="lang-btn" onclick="setLang('zh')">ZH</button>
+</div>
 
-    <p class="updated">Dernière mise à jour : avril 2025</p>
+<div class="container">
+  <p class="updated" id="updated"></p>
 
-    <section>
-      <h2>
-        <span class="icon" style="background:#e9456022;">🛡️</span>
-        En bref
-      </h2>
-      <p>Kintore est une application de suivi d'entraînement. <strong style="color:#fff">Toutes vos données restent sur votre appareil.</strong> Nous ne collectons aucune information personnelle, nous n'avons pas de serveur, et nous ne partageons rien avec des tiers.</p>
-    </section>
+  <section>
+    <h2><span class="icon" style="background:#e9456022">🛡️</span><span id="s1-title"></span></h2>
+    <p id="s1-body"></p>
+  </section>
 
-    <section>
-      <h2>
-        <span class="icon" style="background:#4f9cf922;">📦</span>
-        Données stockées sur votre appareil
-      </h2>
-      <p>L'application stocke uniquement les données suivantes, <strong style="color:#fff">localement sur votre téléphone</strong> :</p>
-      <ul>
-        <li>Votre prénom <span class="badge green">optionnel</span></li>
-        <li>Vos types de séances (nom, couleur, exercices)</li>
-        <li>Votre historique de séances (date, durée, exercices réalisés, notes)</li>
-        <li>Vos préférences (langue, thème clair/sombre)</li>
-      </ul>
-      <p style="margin-top:14px">Ces données ne quittent jamais votre appareil et ne sont jamais transmises à un serveur.</p>
-    </section>
+  <section>
+    <h2><span class="icon" style="background:#4f9cf922">📦</span><span id="s2-title"></span></h2>
+    <p id="s2-intro"></p>
+    <ul id="s2-list"></ul>
+    <p style="margin-top:14px" id="s2-footer"></p>
+  </section>
 
-    <section>
-      <h2>
-        <span class="icon" style="background:#22c55e22;">🔒</span>
-        Ce que nous ne faisons pas
-      </h2>
-      <ul>
-        <li>Nous ne collectons pas de données personnelles identifiables</li>
-        <li>Nous ne créons pas de compte utilisateur</li>
-        <li>Nous n'utilisons pas de cookies ou traceurs</li>
-        <li>Nous ne partageons aucune donnée avec des tiers</li>
-        <li>Nous n'avons pas accès à vos données</li>
-      </ul>
-    </section>
+  <section>
+    <h2><span class="icon" style="background:#22c55e22">🔒</span><span id="s3-title"></span></h2>
+    <ul id="s3-list"></ul>
+  </section>
 
-    <section>
-      <h2>
-        <span class="icon" style="background:#f59e0b22;">📢</span>
-        Publicités
-      </h2>
-      <p>L'application affiche des publicités via <strong style="color:#fff">Google AdMob</strong>. AdMob peut collecter certaines données techniques (identifiant publicitaire, adresse IP) conformément à sa propre politique de confidentialité pour diffuser des publicités pertinentes.</p>
-      <p>Vous pouvez désactiver la publicité personnalisée dans les paramètres de votre appareil Android : <em>Paramètres → Google → Annonces</em>.</p>
-      <p>Politique de confidentialité de Google : <a href="https://policies.google.com/privacy" style="color:#4f9cf9">policies.google.com/privacy</a></p>
-    </section>
+  <section>
+    <h2><span class="icon" style="background:#f59e0b22">📢</span><span id="s4-title"></span></h2>
+    <p id="s4-body1"></p>
+    <p id="s4-body2"></p>
+    <p id="s4-body3"></p>
+  </section>
 
-    <section>
-      <h2>
-        <span class="icon" style="background:#a855f722;">🗑️</span>
-        Suppression de vos données
-      </h2>
-      <p>Vous pouvez supprimer vos données à tout moment :</p>
-      <ul>
-        <li>Dans l'app : <strong style="color:#fff">Réglages → Effacer tout</strong></li>
-        <li>En désinstallant l'application</li>
-      </ul>
-      <p style="margin-top:12px">Ces deux actions suppriment définitivement toutes les données stockées sur votre appareil.</p>
-    </section>
+  <section>
+    <h2><span class="icon" style="background:#a855f722">🗑️</span><span id="s5-title"></span></h2>
+    <p id="s5-intro"></p>
+    <ul id="s5-list"></ul>
+  </section>
+</div>
 
+<footer id="footer"></footer>
 
-  </div>
+<script>
+const T = {
+  fr: {
+    title: 'Politique de confidentialité',
+    updated: 'Dernière mise à jour : avril 2025',
+    s1: { title: 'En bref', body: 'Kintore est une application de suivi d\'entraînement. <strong style="color:#fff">Toutes vos données restent sur votre appareil.</strong> Nous ne collectons aucune information personnelle, nous n\'avons pas de serveur, et nous ne partageons rien avec des tiers.' },
+    s2: { title: 'Données stockées sur votre appareil', intro: 'L\'application stocke uniquement les données suivantes, <strong style="color:#fff">localement sur votre téléphone</strong> :', items: ['Votre prénom <span class="badge">optionnel</span>', 'Vos types de séances (nom, couleur, exercices)', 'Votre historique de séances (date, durée, exercices réalisés, notes)', 'Vos préférences (langue, thème clair/sombre)'], footer: 'Ces données ne quittent jamais votre appareil et ne sont jamais transmises à un serveur.' },
+    s3: { title: 'Ce que nous ne faisons pas', items: ['Nous ne collectons pas de données personnelles identifiables', 'Nous ne créons pas de compte utilisateur', 'Nous n\'utilisons pas de cookies ou traceurs', 'Nous ne partageons aucune donnée avec des tiers', 'Nous n\'avons pas accès à vos données'] },
+    s4: { title: 'Publicités', body1: 'L\'application affiche des publicités via <strong style="color:#fff">Google AdMob</strong>. AdMob peut collecter certaines données techniques (identifiant publicitaire, adresse IP) conformément à sa propre politique de confidentialité pour diffuser des publicités pertinentes.', body2: 'Vous pouvez désactiver la publicité personnalisée dans les paramètres de votre appareil Android : <em>Paramètres → Google → Annonces</em>.', body3: 'Politique de confidentialité de Google : <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: 'Suppression de vos données', intro: 'Vous pouvez supprimer vos données à tout moment :', items: ['Dans l\'app : <strong style="color:#fff">Réglages → Effacer tout</strong>', 'En désinstallant l\'application'] },
+    footer: '© 2025 Kintore · Tous droits réservés',
+  },
+  en: {
+    title: 'Privacy Policy',
+    updated: 'Last updated: April 2025',
+    s1: { title: 'In a nutshell', body: 'Kintore is a workout tracking app. <strong style="color:#fff">All your data stays on your device.</strong> We do not collect any personal information, we have no server, and we share nothing with third parties.' },
+    s2: { title: 'Data stored on your device', intro: 'The app stores only the following data, <strong style="color:#fff">locally on your phone</strong>:', items: ['Your first name <span class="badge">optional</span>', 'Your session types (name, color, exercises)', 'Your workout history (date, duration, exercises, notes)', 'Your preferences (language, light/dark theme)'], footer: 'This data never leaves your device and is never transmitted to any server.' },
+    s3: { title: 'What we don\'t do', items: ['We do not collect personally identifiable data', 'We do not create user accounts', 'We do not use cookies or trackers', 'We do not share any data with third parties', 'We have no access to your data'] },
+    s4: { title: 'Advertisements', body1: 'The app displays ads via <strong style="color:#fff">Google AdMob</strong>. AdMob may collect certain technical data (advertising ID, IP address) in accordance with its own privacy policy to serve relevant ads.', body2: 'You can opt out of personalized ads in your Android device settings: <em>Settings → Google → Ads</em>.', body3: 'Google\'s Privacy Policy: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: 'Deleting your data', intro: 'You can delete your data at any time:', items: ['In the app: <strong style="color:#fff">Settings → Clear all</strong>', 'By uninstalling the application'] },
+    footer: '© 2025 Kintore · All rights reserved',
+  },
+  ja: {
+    title: 'プライバシーポリシー',
+    updated: '最終更新：2025年4月',
+    s1: { title: '概要', body: 'Kintoreはトレーニング記録アプリです。<strong style="color:#fff">すべてのデータはお使いのデバイス上にのみ保存されます。</strong>個人情報の収集は行わず、サーバーも持たず、第三者とデータを共有することもありません。' },
+    s2: { title: 'デバイスに保存されるデータ', intro: 'アプリは以下のデータのみを<strong style="color:#fff">端末内にローカル保存</strong>します：', items: ['お名前 <span class="badge">任意</span>', 'トレーニングの種類（名前・色・種目）', 'トレーニング履歴（日付・時間・種目・メモ）', '設定（言語・テーマ）'], footer: 'これらのデータはデバイス外に送信されることはありません。' },
+    s3: { title: '行わないこと', items: ['個人を特定できるデータの収集', 'ユーザーアカウントの作成', 'クッキーやトラッカーの使用', '第三者へのデータ共有', 'お客様のデータへのアクセス'] },
+    s4: { title: '広告について', body1: 'アプリは<strong style="color:#fff">Google AdMob</strong>を通じて広告を表示します。AdMobは関連性の高い広告を配信するために、技術的なデータ（広告ID、IPアドレス）を収集する場合があります。', body2: 'パーソナライズ広告はAndroid設定から無効にできます：<em>設定 → Google → 広告</em>', body3: 'Googleのプライバシーポリシー：<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: 'データの削除', intro: 'いつでもデータを削除できます：', items: ['アプリ内：<strong style="color:#fff">設定 → すべて消去</strong>', 'アプリをアンインストールする'] },
+    footer: '© 2025 Kintore · All rights reserved',
+  },
+  es: {
+    title: 'Política de privacidad',
+    updated: 'Última actualización: abril 2025',
+    s1: { title: 'En resumen', body: 'Kintore es una aplicación de seguimiento de entrenamientos. <strong style="color:#fff">Todos tus datos permanecen en tu dispositivo.</strong> No recopilamos información personal, no tenemos servidor y no compartimos nada con terceros.' },
+    s2: { title: 'Datos almacenados en tu dispositivo', intro: 'La aplicación almacena únicamente los siguientes datos, <strong style="color:#fff">localmente en tu teléfono</strong>:', items: ['Tu nombre <span class="badge">opcional</span>', 'Tus tipos de sesión (nombre, color, ejercicios)', 'Tu historial de entrenamientos (fecha, duración, ejercicios, notas)', 'Tus preferencias (idioma, tema claro/oscuro)'], footer: 'Estos datos nunca salen de tu dispositivo ni se transmiten a ningún servidor.' },
+    s3: { title: 'Lo que no hacemos', items: ['No recopilamos datos personales identificables', 'No creamos cuentas de usuario', 'No usamos cookies ni rastreadores', 'No compartimos datos con terceros', 'No tenemos acceso a tus datos'] },
+    s4: { title: 'Publicidad', body1: 'La app muestra anuncios a través de <strong style="color:#fff">Google AdMob</strong>. AdMob puede recopilar ciertos datos técnicos (ID publicitario, dirección IP) para mostrar anuncios relevantes.', body2: 'Puedes desactivar los anuncios personalizados en los ajustes de tu Android: <em>Ajustes → Google → Anuncios</em>.', body3: 'Política de privacidad de Google: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: 'Eliminar tus datos', intro: 'Puedes eliminar tus datos en cualquier momento:', items: ['En la app: <strong style="color:#fff">Ajustes → Borrar todo</strong>', 'Desinstalando la aplicación'] },
+    footer: '© 2025 Kintore · Todos los derechos reservados',
+  },
+  de: {
+    title: 'Datenschutzrichtlinie',
+    updated: 'Letzte Aktualisierung: April 2025',
+    s1: { title: 'Kurzfassung', body: 'Kintore ist eine App zur Trainingsaufzeichnung. <strong style="color:#fff">Alle Ihre Daten bleiben auf Ihrem Gerät.</strong> Wir sammeln keine persönlichen Daten, haben keinen Server und teilen nichts mit Dritten.' },
+    s2: { title: 'Auf Ihrem Gerät gespeicherte Daten', intro: 'Die App speichert ausschließlich folgende Daten <strong style="color:#fff">lokal auf Ihrem Gerät</strong>:', items: ['Ihr Vorname <span class="badge">optional</span>', 'Ihre Trainingstypen (Name, Farbe, Übungen)', 'Ihr Trainingsprotokoll (Datum, Dauer, Übungen, Notizen)', 'Ihre Einstellungen (Sprache, Hell-/Dunkelmodus)'], footer: 'Diese Daten verlassen niemals Ihr Gerät und werden niemals an einen Server übertragen.' },
+    s3: { title: 'Was wir nicht tun', items: ['Wir sammeln keine personenbezogenen Daten', 'Wir erstellen keine Benutzerkonten', 'Wir verwenden keine Cookies oder Tracker', 'Wir teilen keine Daten mit Dritten', 'Wir haben keinen Zugang zu Ihren Daten'] },
+    s4: { title: 'Werbung', body1: 'Die App zeigt Werbung über <strong style="color:#fff">Google AdMob</strong> an. AdMob kann bestimmte technische Daten (Werbe-ID, IP-Adresse) gemäß seiner eigenen Datenschutzrichtlinie erheben.', body2: 'Sie können personalisierte Werbung in den Android-Einstellungen deaktivieren: <em>Einstellungen → Google → Anzeigen</em>.', body3: 'Googles Datenschutzrichtlinie: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: 'Ihre Daten löschen', intro: 'Sie können Ihre Daten jederzeit löschen:', items: ['In der App: <strong style="color:#fff">Einstellungen → Alles löschen</strong>', 'Durch Deinstallation der App'] },
+    footer: '© 2025 Kintore · Alle Rechte vorbehalten',
+  },
+  ko: {
+    title: '개인정보처리방침',
+    updated: '최종 업데이트: 2025년 4월',
+    s1: { title: '요약', body: 'Kintore는 운동 기록 앱입니다. <strong style="color:#fff">모든 데이터는 기기에만 저장됩니다.</strong> 개인정보를 수집하지 않으며, 서버가 없고, 제3자와 데이터를 공유하지 않습니다.' },
+    s2: { title: '기기에 저장되는 데이터', intro: '앱은 다음 데이터만 <strong style="color:#fff">기기에 로컬 저장</strong>합니다:', items: ['이름 <span class="badge">선택사항</span>', '운동 유형 (이름, 색상, 운동 목록)', '운동 기록 (날짜, 시간, 운동, 메모)', '설정 (언어, 라이트/다크 테마)'], footer: '이 데이터는 기기 밖으로 전송되지 않습니다.' },
+    s3: { title: '하지 않는 것', items: ['개인 식별 데이터 수집 없음', '사용자 계정 생성 없음', '쿠키 또는 추적기 사용 없음', '제3자와 데이터 공유 없음', '사용자 데이터에 대한 접근 없음'] },
+    s4: { title: '광고', body1: '앱은 <strong style="color:#fff">Google AdMob</strong>을 통해 광고를 표시합니다. AdMob은 관련 광고를 제공하기 위해 기술 데이터(광고 ID, IP 주소)를 수집할 수 있습니다.', body2: 'Android 설정에서 맞춤 광고를 비활성화할 수 있습니다: <em>설정 → Google → 광고</em>', body3: 'Google 개인정보처리방침: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: '데이터 삭제', intro: '언제든지 데이터를 삭제할 수 있습니다:', items: ['앱 내: <strong style="color:#fff">설정 → 모두 삭제</strong>', '앱 제거'] },
+    footer: '© 2025 Kintore · All rights reserved',
+  },
+  zh: {
+    title: '隐私政策',
+    updated: '最后更新：2025年4月',
+    s1: { title: '简述', body: 'Kintore 是一款健身记录应用。<strong style="color:#fff">所有数据均保留在您的设备上。</strong>我们不收集任何个人信息，没有服务器，也不与第三方共享任何内容。' },
+    s2: { title: '存储在您设备上的数据', intro: '应用仅将以下数据<strong style="color:#fff">本地存储在您的手机上</strong>：', items: ['您的名字 <span class="badge">可选</span>', '您的训练类型（名称、颜色、动作）', '您的训练记录（日期、时长、动作、备注）', '您的偏好设置（语言、明/暗主题）'], footer: '这些数据永远不会离开您的设备，也不会传输到任何服务器。' },
+    s3: { title: '我们不做的事', items: ['不收集可识别个人身份的数据', '不创建用户账户', '不使用Cookie或追踪器', '不与第三方共享数据', '无法访问您的数据'] },
+    s4: { title: '广告', body1: '应用通过 <strong style="color:#fff">Google AdMob</strong> 展示广告。AdMob 可能会根据其隐私政策收集某些技术数据（广告ID、IP地址）以投放相关广告。', body2: '您可以在Android设备设置中关闭个性化广告：<em>设置 → Google → 广告</em>', body3: 'Google隐私政策：<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>' },
+    s5: { title: '删除您的数据', intro: '您可以随时删除数据：', items: ['在应用内：<strong style="color:#fff">设置 → 清除所有</strong>', '卸载应用'] },
+    footer: '© 2025 Kintore · 保留所有权利',
+  },
+};
 
-  <footer>
-    © 2025 Kintore · Tous droits réservés
-  </footer>
+function setLang(code) {
+  const t = T[code];
+  document.getElementById('header-sub').textContent = t.title;
+  document.getElementById('updated').textContent = t.updated;
+  document.getElementById('s1-title').textContent = t.s1.title;
+  document.getElementById('s1-body').innerHTML = t.s1.body;
+  document.getElementById('s2-title').textContent = t.s2.title;
+  document.getElementById('s2-intro').innerHTML = t.s2.intro;
+  document.getElementById('s2-list').innerHTML = t.s2.items.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('s2-footer').innerHTML = t.s2.footer;
+  document.getElementById('s3-title').textContent = t.s3.title;
+  document.getElementById('s3-list').innerHTML = t.s3.items.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('s4-title').textContent = t.s4.title;
+  document.getElementById('s4-body1').innerHTML = t.s4.body1;
+  document.getElementById('s4-body2').innerHTML = t.s4.body2;
+  document.getElementById('s4-body3').innerHTML = t.s4.body3;
+  document.getElementById('s5-title').textContent = t.s5.title;
+  document.getElementById('s5-intro').innerHTML = t.s5.intro;
+  document.getElementById('s5-list').innerHTML = t.s5.items.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('footer').textContent = t.footer;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === code.toUpperCase());
+  });
+  document.documentElement.lang = code;
+}
 
+// Auto-detect browser language
+const browserLang = navigator.language.slice(0, 2).toLowerCase();
+const supported = ['fr', 'en', 'ja', 'es', 'de', 'ko', 'zh'];
+setLang(supported.includes(browserLang) ? browserLang : 'en');
+</script>
 </body>
 </html>
